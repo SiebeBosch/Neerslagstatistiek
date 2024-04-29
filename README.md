@@ -27,7 +27,13 @@ Het tabblad "KVD" bevat de parameterwaarden voor de kansverdelingsfuncties. Aan 
 
 Voor de publicatie uit 2019 komt daar nog de dispersiecoëfficiënt bij.
 
-Het tabblad 'Resultaten' bevat de complete lijst aan volumes en bijbehorende frequenties. Deze lijst is bedoeld om te worden geïmporteerd in de database die door De Nieuwe Stochastentool wordt gebruikt.
+Het tabblad 'Naar_Stochastentool' bevat de complete lijst aan volumes en bijbehorende frequenties. Deze lijst is bedoeld om te worden geïmporteerd in de database die door De Nieuwe Stochastentool wordt gebruikt.
+
+De tabbladen Huidig_Z, Huidig_W, 2030_W etc. bevatten de tabellen met klassen van neerslagvolumes en de bijbehorende kans/frequentie, voor elk van de klimaatscenario's. 
+
+* Huidig staat voor huidig klimaat, 2030 voor zichtjaar 2030 etc.
+* Z staat voor Zomer en W voor winter.
+
 
 
 
