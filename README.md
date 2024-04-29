@@ -11,6 +11,12 @@ De resultaten van de macro's en scripts in deze repository vormen input voor o.a
 ## Werking
 De kansverdelingsfuncties zoals door STOWA gepubliceerd worden omgezet in discrete klassen met neerslagvolume en bijbehorende kans. Andersom gebeurt ook: volume als functie van kans.
 
+## Implementaties
+De neerslagstatistieken ontsluiten we op de volgende manieren:
+
+* Een Excel-macro. Zie de folder Excel. Deze macro geeft als functie van neerslagvolume de bijbehorende kans/herhalingstijd. De uitkomsten vormen op hun beurt weer input voor De Nieuwe Stochastentool
+
+
 
 
 
