@@ -21,8 +21,8 @@ De neerslagstatistieken ontsluiten we op de volgende manieren:
 De basis voor het Excel-macro wat we hieronder bespreken wordt gevormd door de VBA-functies in het bestand STOWA_Neerslagstatistiek.bas. Dit bestand bevat alle functies waarmee gebruikers van Excel herhalingstijden en overschrijdingskansen kunnen opvragen voor elk van de scenario's zoals door STOWA gepubliceerd.
 
 Essentiële functies:
-* STOWA2024_JAAR_V: berekent het jaarrond overschrijdingsvolume, gegeven de duur in minuten, herhalingstijd in jaren, zichtjaar (2033, 2050, 2100, 2150) en scenario (L, M, H)
-* STOWA2024_JAAR_T: berekent de herhalingstijd voor wintergebeurtenissen, gegeven het volume in millimeters, de duur in minuten, zichtjaar (2033, 2050, 2100, 2150) en scenario (L, M, H) 
+* STOWA2024_JAARROND_V: berekent het jaarrond overschrijdingsvolume, gegeven de duur in minuten, herhalingstijd in jaren, zichtjaar (2033, 2050, 2100, 2150) en scenario (L, M, H)
+* STOWA2024_JAARROND_T: berekent de herhalingstijd voor wintergebeurtenissen, gegeven het volume in millimeters, de duur in minuten, zichtjaar (2033, 2050, 2100, 2150) en scenario (L, M, H) 
 * STOWA2024_NDJF_V: berekent het winteroverschrijdingsvolume (nov, dec, jan, feb), gegeven de duur in minuten, herhalingstijd in jaren, zichtjaar (2033, 2050, 2100, 2150) en scenario (L, M, H)
 * STOWA2024_NDJF_T: berekent de herhalingstijd voor wintergebeurtenissen, gegeven het volume in millimeters, de duur in minuten, zichtjaar (2033, 2050, 2100, 2150) en scenario (L, M, H) 
 
