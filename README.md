@@ -1,5 +1,5 @@
 # Neerslagstatistiek
-Neerslagstatistieken voor Nederland: implementatie van de publicaties van STOWA uit 2014/2018, 2019 en 2024.
+Neerslagstatistieken voor Nederland: implementatie van de publicaties van STOWA uit 2015/2018, 2019 en 2024.
 
 ## Inleiding
 Deze git-repository bevat een implementatie van de neerslagstatistieken voor Nederland zoals gepubliceerd door STOWA in de jaren 2015 2018 (update korte duren), 2019 en 2024.
