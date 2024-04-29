@@ -15,6 +15,7 @@ De kansverdelingsfuncties zoals door STOWA gepubliceerd worden omgezet in discre
 De neerslagstatistieken ontsluiten we op de volgende manieren:
 
 * Een Excel-macro. Zie de folder Excel. Deze macro geeft als functie van neerslagvolume de bijbehorende kans/herhalingstijd. De uitkomsten vormen op hun beurt weer input voor De Nieuwe Stochastentool
+* Een Jupyter-notebook. Zie de folder Jupyter. Dit notebook berekent de multipliers om komen van neerslagvolumes uit 2019 scenario Huidg naar een 2024 klimaatscenario en produceert daarbij Excel-bestanden met volumes
 
 ### Excel
 Het Excel-document bevat op dit moment tabellen voor de publicatiejaren 2015 en 2019:
@@ -34,10 +35,8 @@ De tabbladen Huidig_Z, Huidig_W, 2030_W etc. bevatten de tabellen met klassen va
 * Huidig staat voor huidig klimaat, 2030 voor zichtjaar 2030 etc.
 * Z staat voor Zomer en W voor winter.
 
-
-
-
-
+### Jupyter
+Het Jupyter-notebook berekent de multiplier die nodig is om van het neerslagvolume onder scenario 2019_Huidig te komen tot het volume onder scenario's 2024.
 
 # Literatuur
 
