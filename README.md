@@ -9,7 +9,7 @@ De resultaten van de macro's en scripts in deze repository vormen input voor o.a
 * Meteobase (https://github.com/SiebeBosch/meteobase).
 
 ## Werking
-De kansverdelingsfuncties zoals door STOWA gepubliceerd worden omgezet in discrete klassen met neerslagvolume en bijbehorende kans. Andersom gebeurt ook: volume als functie van kans.
+De kansverdelingsfuncties zoals door STOWA gepubliceerd kunnen met behulp van de scripts in deze repository worden omgezet in discrete klassen met neerslagvolume en bijbehorende kans. Andersom kan ook: volume als functie van kans.
 
 ## Implementaties
 De neerslagstatistieken ontsluiten we op de volgende manieren:
