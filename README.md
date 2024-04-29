@@ -36,6 +36,10 @@ Publicatie neerslagstatistieken 2019:
 * STOWA2019_NDJF_T: berekent de herhalingstijd voor wintergebeurtenissen, gegeven het volume in millimeters, de duur in minuten, zichtjaar (2014, 2030, 2050, 2085) en scenario (GL, GH, WL, WH)
 
 Publicatie neerslagstatistieken 2015/2018:
+* STOWA2015_2018_JAARROND_V: berekent het jaarrond overschrijdingsvolume, gegeven de duur in minuten, herhalingstijd in jaren, zichtjaar (2014, 2030, 2050, 2085) en scenario (GL, GH, WL, WH)
+* STOWA2015_2018_JAARROND_T: berekent de herhalingstijd voor wintergebeurtenissen, gegeven het volume in millimeters, de duur in minuten, zichtjaar (2014, 2030, 2050, 2085) en scenario (GL, GH, WL, WH) 
+* STOWA2015_JAARROND_V: berekent het winteroverschrijdingsvolume (nov, dec, jan, feb), gegeven de duur in minuten, herhalingstijd in jaren, zichtjaar (2014, 2030, 2050, 2085) en scenario (GL, GH, WL, WH)
+* STOWA2015_JAARROND_T: berekent de herhalingstijd voor wintergebeurtenissen, gegeven het volume in millimeters, de duur in minuten, zichtjaar (2014, 2030, 2050, 2085) en scenario (GL, GH, WL, WH)
 
 
 #### Workbooks
