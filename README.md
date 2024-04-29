@@ -17,11 +17,17 @@ De neerslagstatistieken ontsluiten we op de volgende manieren:
 * Een Excel-macro. Zie de folder Excel. Deze macro geeft als functie van neerslagvolume de bijbehorende kans/herhalingstijd. De uitkomsten vormen op hun beurt weer input voor De Nieuwe Stochastentool
 * Een Jupyter-notebook. Zie de folder Jupyter. Dit notebook berekent de multipliers om komen van neerslagvolumes uit 2019 scenario Huidg naar een 2024 klimaatscenario en produceert daarbij Excel-bestanden met volumes
 
-### Excel
-Het Excel-document bevat op dit moment tabellen voor de publicatiejaren 2015 en 2019.
+### Excel/VBA
+Het Excel-document bevat op dit moment tabellen voor de publicatiejaren 2015/2018, 2019 en 2024.
 Het oorspronkelijke macro werd opgesteld door Siebe Bosch (Hydroconsult).
 
 De basis voor het Excel-macro wordt gevormd door de VBA-functies in het bestand STOWA_Neerslagstatistiek.bas. Dit bestand bevat alle functies waarmee gebruikers van Excel herhalingstijden en overschrijdingskansen kunnen opvragen voor elk van de scenario's zoals door STOWA gepubliceerd.
+
+Essentiële functies:
+* STOWA2024_JAAR_V: berekent het jaarrond overschrijdingsvolume, gegeven de duur in minuten, herhalingstijd in jaren, zichtjaar (2033, 2050, 2100, 2150) en scenario (L, M, H)
+* STOWA2024_JAAR_T: berekent de herhalingstijd voor wintergebeurtenissen, gegeven het volume in millimeters, de duur in minuten, zichtjaar (2033, 2050, 2100, 2150) en scenario (L, M, H) 
+* STOWA2024_NDJF_V: berekent het winteroverschrijdingsvolume (nov, dec, jan, feb), gegeven de duur in minuten, herhalingstijd in jaren, zichtjaar (2033, 2050, 2100, 2150) en scenario (L, M, H)
+* STOWA2024_NDJF_T: berekent de herhalingstijd voor wintergebeurtenissen, gegeven het volume in millimeters, de duur in minuten, zichtjaar (2033, 2050, 2100, 2150) en scenario (L, M, H) 
 
 Het tabblad "KVD" bevat de parameterwaarden voor de kansverdelingsfuncties. Aan de grootheid 'neerslagvolume' is in de genoemde publicaties de GEV-kansdichtheidsfunctie gefit (Generalized Extreme Values). Het tabblad bevat voor verschillende duren, seizoenen en klimaatscenario's drie parameterwaarden:
 
