@@ -40,7 +40,7 @@ De tabbladen Huidig_Z, Huidig_W, 2030_W etc. bevatten de tabellen met klassen va
 Het Jupyter-notebook berekent de multiplier die nodig is om van het neerslagvolume onder scenario 2019_Huidig te komen tot het volume onder scenario's 2024.
 Het oorspronkelijke notebook werd opgesteld en aangelever door HKV-Lijn-In-Water.
 
-# Literatuur
+## Literatuur
 
 STOWA. (2015). Nieuwe neerslagstatistieken voor het waterbeheer: extreme neerslaggebeurtenissen nemen toe (Publicatienummer 2015-10a). Verkregen van [https://www.stowa.nl/publicaties/nieuwe-neerslagstatistieken-voor-het-waterbeheer-extreme-neerslaggebeurtenissen-nemen](https://www.stowa.nl/sites/default/files/assets/PUBLICATIES/Publicaties%202015/STOWA%202015-10A.pdf)
 
