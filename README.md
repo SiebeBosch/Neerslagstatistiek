@@ -1,4 +1,4 @@
-# Neerslagstatistiek
+# Neerslagstatistiek van Nederland
 Neerslagstatistieken voor Nederland: implementatie van de publicaties van STOWA uit 2015/2018, 2019 en 2024.
 
 ## Inleiding
