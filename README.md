@@ -18,7 +18,8 @@ De neerslagstatistieken ontsluiten we op de volgende manieren:
 * Een Jupyter-notebook. Zie de folder Jupyter. Dit notebook berekent de multipliers om komen van neerslagvolumes uit 2019 scenario Huidg naar een 2024 klimaatscenario en produceert daarbij Excel-bestanden met volumes
 
 ### Excel
-Het Excel-document bevat op dit moment tabellen voor de publicatiejaren 2015 en 2019:
+Het Excel-document bevat op dit moment tabellen voor de publicatiejaren 2015 en 2019.
+Het oorspronkelijke macro werd opgesteld door Siebe Bosch (Hydroconsult).
 
 Het tabblad "KVD" bevat de parameterwaarden voor de kansverdelingsfuncties. Aan de grootheid 'neerslagvolume' is in de genoemde publicaties de GEV-kansdichtheidsfunctie gefit (Generalized Extreme Values). Het tabblad bevat voor verschillende duren, seizoenen en klimaatscenario's drie parameterwaarden:
 
@@ -37,6 +38,7 @@ De tabbladen Huidig_Z, Huidig_W, 2030_W etc. bevatten de tabellen met klassen va
 
 ### Jupyter
 Het Jupyter-notebook berekent de multiplier die nodig is om van het neerslagvolume onder scenario 2019_Huidig te komen tot het volume onder scenario's 2024.
+Het oorspronkelijke notebook werd opgesteld en aangelever door HKV-Lijn-In-Water.
 
 # Literatuur
 
