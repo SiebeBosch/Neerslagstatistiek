@@ -27,7 +27,8 @@ _Neerslagstatistieken ten behoeve van De Nieuwe Stochastentool:_
 * Neerslagstatistieken_2019.xlsm: bevat de neerslagstatistieken conform publicatie door STOWA in 2019.
 * Neerslagstatistieken_2024.xlsm: bevat de neerslagstatistieken conform publicatie door STOWA in 2024.
 
-  Statistieken klimaat 'huidig' ongewijzigd tov publicatie 2019. Voor de zichtjaren wordt het 'verandergetal) (een multiplier) berekend die een funtie is van de verwachte temperatuursstijging en het seizoen.
+  Statistieken klimaat 'huidig' ongewijzigd tov publicatie 2019. Voor de zichtjaren wordt het 'verandergetal) (een multiplier) berekend die een functie is van de verwachte temperatuursstijging en het seizoen.
+  Op het tabblad 'Start' kan de gebruiker de statistieken exporteren naar CSV ten behoeve van opname in de database van De Nieuwe Stochastentool.
 
 #### VBA
 Alle Excel-werkboeken gebruiken hetzelfde bronbestand met VBA-functies: STOWA_Neerslagstatistiek.bas.
