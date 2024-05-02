@@ -12,7 +12,9 @@ Option Explicit
 '0617682689               '
 '-------------------------'
 
-'versie 1.05
+'versie 1.06
+'changelog:
+'v1.06: onderscheid aangebracht tussen verandergetal jaarrond en winter; ten behoeve van de neerslagscenario's van 2024
 
 Public Function STOWA2015_2018_WINTER_T(ByVal DuurMinuten As Integer, ByVal Zichtjaar As Integer, ByVal Scenario As String, ByVal Corner As String, ByVal Volume As Double) As Double
     
@@ -377,7 +379,7 @@ Public Function STOWA2024_NDJF_V(DuurMinuten As Integer, T As Double, Zichtjaar 
     STOWA2024_NDJF_V = STOWA2019_NDJF_V(DuurMinuten, T, 2014, "", "")
     
     Dim VeranderGetal As Double
-    VeranderGetal = getVeranderGetal(Zichtjaar, Scenario, DuurMinuten / 60)
+    VeranderGetal = getVeranderGetal(Zichtjaar, Scenario, "winter", DuurMinuten / 60)
     
     'het volume is nu eenvoudigweg het verandergetal als multiplier op het volume van huidig 2019.
     STOWA2024_NDJF_V = VeranderGetal * STOWA2024_NDJF_V
@@ -390,7 +392,7 @@ Public Function STOWA2024_NDJF_T(ByVal DuurMinuten As Integer, ByVal Volume As D
     'scenario Huidig is in de 2024-scenario's identiek aan die van 2019
     'daarom kunnen we vrij eenvoudig terugrekenen als we eerst ons volume terugschalen naar scenario Huidig
     Dim VeranderGetal As Double
-    VeranderGetal = getVeranderGetal(Zichtjaar, Scenario, DuurMinuten / 60)
+    VeranderGetal = getVeranderGetal(Zichtjaar, Scenario, "winter", DuurMinuten / 60)
     
     'corrigeer eerst het volume door te delen door het verandergetal
     Volume = Volume / VeranderGetal
@@ -411,7 +413,7 @@ Public Function STOWA2024_JAARROND_V(DuurMinuten As Integer, T As Double, Zichtj
     STOWA2024_JAARROND_V = STOWA2019_JAARROND_V(DuurMinuten, T, 2014, "", "")
     
     Dim VeranderGetal As Double
-    VeranderGetal = getVeranderGetal(Zichtjaar, Scenario, DuurMinuten / 60)
+    VeranderGetal = getVeranderGetal(Zichtjaar, Scenario, "jaarrond", DuurMinuten / 60)
     
     'het volume is nu eenvoudigweg het verandergetal als multiplier op het volume van huidig 2019.
     STOWA2024_JAARROND_V = VeranderGetal * STOWA2024_JAARROND_V
@@ -424,7 +426,7 @@ Public Function STOWA2024_JAARROND_T(ByVal DuurMinuten As Integer, ByVal Volume 
     'scenario Huidig is in de 2024-scenario's identiek aan die van 2019
     'daarom kunnen we vrij eenvoudig terugrekenen als we eerst ons volume terugschalen naar scenario Huidig
     Dim VeranderGetal As Double
-    VeranderGetal = getVeranderGetal(Zichtjaar, Scenario, DuurMinuten / 60)
+    VeranderGetal = getVeranderGetal(Zichtjaar, Scenario, "jaarrond", DuurMinuten / 60)
     
     'corrigeer eerst het volume door te delen door het verandergetal
     Volume = Volume / VeranderGetal
@@ -464,7 +466,7 @@ Public Function STOWA2019_JAARROND_T(ByVal DuurMinuten As Integer, ByVal Volume 
     
 End Function
 
-Function getVeranderGetal(Zichtjaar As Integer, Scenario As String, DuurUren As Double) As Double
+Function getVeranderGetal(Zichtjaar As Integer, Scenario As String, Seizoen as string, DuurUren As Double) As Double
     'deze functie berekent het verandergetal voor de klimaatscenario's 2024 als functie van zichtjaar, scenario en duur
     'op zijn beurt roept deze functie weer de functie VeranderGetalFunctie aan, waarin hij de verwachtte temperatuursstijging meegeeft, die afhangt van het zichtjaar en scenario
     '0.6 graden (2033L)
@@ -476,40 +478,95 @@ Function getVeranderGetal(Zichtjaar As Integer, Scenario As String, DuurUren As 
     '4.0 graden (2100H)
     '5.5 graden (2150H)
     If Zichtjaar = 2014 Then
+		'geen verandering
         getVeranderGetal = 1
     ElseIf Zichtjaar = 2033 Then
         If Scenario = "L" Then
-            getVeranderGetal = VeranderGetalFunctie(0.6, DuurUren)
+            if seizoen = "winter" Then
+				getVeranderGetal = VeranderGetalFunctieWinter(0.6, DuurUren)
+			Else
+				getVeranderGetal = VeranderGetalFunctieJaarrond(0.6, DuurUren)			
+			end if
         ElseIf Scenario = "M" Then
+			'is een niet-bestaand scenario
+			getVeranderGetal = 0
         ElseIf Scenario = "H" Then
+			'is een niet-bestaand scenario
+			getVeranderGetal = 0
+		Else
+			'is een niet-bestaand scenario
+			getVeranderGetal = 0
         End If
     ElseIf Zichtjaar = 2050 Then
         If Scenario = "L" Then
-            getVeranderGetal = VeranderGetalFunctie(0.8, DuurUren)
+			if seizoen = "winter" Then
+				getVeranderGetal = VeranderGetalFunctieWinter(0.8, DuurUren)
+			Else
+				getVeranderGetal = VeranderGetalFunctieJaarrond(0.8, DuurUren)
+			end if
         ElseIf Scenario = "M" Then
-            getVeranderGetal = VeranderGetalFunctie(1.1, DuurUren)
+			if seizoen = "winter" Then
+				getVeranderGetal = VeranderGetalFunctieWinter(1.1, DuurUren)
+			Else
+				getVeranderGetal = VeranderGetalFunctieJaarrond(1.1, DuurUren)
+			end If
         ElseIf Scenario = "H" Then
-            getVeranderGetal = VeranderGetalFunctie(1.5, DuurUren)
+			if seizoen = "winter" Then
+				getVeranderGetal = VeranderGetalFunctieWinter(1.5, DuurUren)
+			Else
+				getVeranderGetal = VeranderGetalFunctieJaarrond(1.5, DuurUren)
+			end if
+		else
+			'is een niet-bestaand scenario
+			getVeranderGetal = 0
         End If
     ElseIf Zichtjaar = 2100 Then
         If Scenario = "L" Then
-            getVeranderGetal = VeranderGetalFunctie(0.8, DuurUren)
+			if seizoen = "winter" Then
+				getVeranderGetal = VeranderGetalFunctieWinter(0.8, DuurUren)
+			Else
+				getVeranderGetal = VeranderGetalFunctieJaarrond(0.8, DuurUren)
+			end if
         ElseIf Scenario = "M" Then
-            getVeranderGetal = VeranderGetalFunctie(1.9, DuurUren)
+			if seizoen = "winter" Then
+				getVeranderGetal = VeranderGetalFunctieWinter(1.9, DuurUren)
+			Else
+				getVeranderGetal = VeranderGetalFunctieJaarrond(1.9, DuurUren)
+			end if
         ElseIf Scenario = "H" Then
-            getVeranderGetal = VeranderGetalFunctie(4, DuurUren)
+			if seizoen = "winter" Then
+				getVeranderGetal = VeranderGetalFunctieWinter(4, DuurUren)
+			Else
+				getVeranderGetal = VeranderGetalFunctieJaarrond(4, DuurUren)
+			end if
+		else
+			'is een niet-bestaand scenario
+			getVeranderGetal = 0
         End If
     ElseIf Zichtjaar = 2150 Then
         If Scenario = "L" Then
+			'is een niet-bestaand scenario
+			getVeranderGetal = 0
         ElseIf Scenario = "M" Then
-            getVeranderGetal = VeranderGetalFunctie(2.1, DuurUren)
+			if seizoen = "winter" Then
+				getVeranderGetal = VeranderGetalFunctieWinter(2.1, DuurUren)
+			Else
+				getVeranderGetal = VeranderGetalFunctieJaarrond(2.1, DuurUren)
+			end if
         ElseIf Scenario = "H" Then
-            getVeranderGetal = VeranderGetalFunctie(5.5, DuurUren)
+			if seizoen = "winter" Then
+				getVeranderGetal = VeranderGetalFunctieWinter(5.5, DuurUren)
+			Else
+				getVeranderGetal = VeranderGetalFunctieJaarrond(5.5, DuurUren)
+			end if
+		Else
+			'is een niet-bestaand scenario
+			getVeranderGetal = 0
         End If
     End If
 End Function
 
-Function VeranderGetalFunctie(Ts As Double, D As Double, Optional T As Double = 1) As Double
+Function VeranderGetalFunctieWinter(Ts As Double, D As Double, Optional T As Double = 1) As Double
     Dim v As Double
     ' Deze functie berekent het verandergetal wat nodig is voor de klimaatscenario's van 2024
     ' Ts: temperatuurstijging in graden Celsius
@@ -530,16 +587,46 @@ Function VeranderGetalFunctie(Ts As Double, D As Double, Optional T As Double = 
                   Description:="Gekozen duur " & D & " valt buiten domein: 10 minuten t/m 10 dagen (240 uur)"
     End If
     
-    VeranderGetalFunctie = 1 + (v - 1) * Ts / 4 ' de factor v is afgeleid voor 4 graden temperatuurstijging
+    VeranderGetalFunctieWinter = 1 + (v - 1) * Ts / 4 ' de factor v is afgeleid voor 4 graden temperatuurstijging
+End Function
+
+Function verandergetalfunctieJaarrond(Ts As Double, D As Double, Optional T As Double = 1) As Double
+    ' Ts: temperatuurstijging in graden Celsius
+    ' D:  duur in uren
+    ' T:  terugkeertijd (irrelevante parameter)
+    
+    Dim v As Double
+    
+    If D < 1 / 6 Then
+        Err.Raise Number:=vbObjectError + 513, _
+                  Description:="Gekozen duur " & D & " valt buiten domein (10 minuten t/m 240 uur)"
+    ElseIf D <= 24 Then
+        v = 1.234
+    ElseIf D < 120 Then
+        v = LogPoly(D) ' Assuming LogPoly is a function you have elsewhere
+    ElseIf D <= 240 Then
+        v = 1.109
+    ElseIf D > 240 Then
+        Err.Raise Number:=vbObjectError + 514, _
+                  Description:="Gekozen duur " & D & " valt buiten domein: 10 minuten t/m 10 dagen (240 uur)"
+    End If
+    
+    verandergetalfunctieJaarrond = 1 + (v - 1) * Ts / 4 ' de factor v is afgeleid voor 4 graden temperatuurstijging
 End Function
 
 Function Poly(D As Double) As Double
-    'dit is een door HKV gefitte polynoom aan de multipliers voor verschillende duren
+    'dit is een door HKV gefitte polynoom aan de multipliers voor verschillende duren, voor het winterseizoen; publicaties 2024
     ' Calculate the polynomial value based on D
     Poly = 0.000005952 * D ^ 2 - 0.001515 * D + 1.277
 End Function
 
-
+Function LogPoly(D As Double) As Double
+    'dit is een door HKV gefitter polynoom aan de multipliers voor verschillende duren, voor jaarrond-neerslagstatistiek; publicaties 2024
+    ' Logarithmic polynomial calculation as specified
+    Dim logD As Double
+    logD = Log(D)
+    LogPoly = 0.009143 * logD ^ 2 - 0.1508 * logD + 1.621
+End Function
 
 Public Function STOWA2019_NDJF_V(DuurMinuten As Integer, T As Double, Zichtjaar As Integer, Scenario As String, Corner As String) As Double
     'deze functie berekent de herhalingstijd voor winter-neerslagstatistiek conform STOWA, 2019 met gegeven Herhalingstijd en duur in minuten
