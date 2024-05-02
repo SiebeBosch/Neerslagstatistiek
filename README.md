@@ -55,8 +55,8 @@ _Publicatie neerslagstatistieken 2015/2018_:
 
 
 ### Jupyter
-Het Jupyter-notebook berekent de multiplier die nodig is om van het neerslagvolume onder scenario 2019_Huidig te komen tot het volume onder scenario's 2024.
-Het oorspronkelijke notebook werd opgesteld en aangelever door HKV-Lijn-In-Water.
+De Jupyter-notebooks berekenen het verandergetal (multiplier) dat nodig is om van het neerslagvolume onder scenario 2019_Huidig te komen tot het volume onder de scenario's 2024.
+Het oorspronkelijke notebook werd opgesteld en aangeleverd door HKV-Lijn-In-Water.
 
 ## Literatuur
 
