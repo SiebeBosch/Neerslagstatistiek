@@ -20,6 +20,12 @@ De neerslagstatistieken ontsluiten we op de volgende manieren:
 ### Excel
 De basis voor het Excel-macro wat we hieronder bespreken wordt gevormd door de VBA-functies in het bestand STOWA_Neerslagstatistiek.bas. Dit bestand bevat alle functies waarmee gebruikers van Excel herhalingstijden en overschrijdingskansen kunnen opvragen voor elk van de scenario's zoals door STOWA gepubliceerd.
 
+#### Werkboeken
+_Neerslagstatistieken ten behoeve van De Nieuwe Stochastentool:_
+* Neerslagstatistieken_2015.xlsm: bevat de neerslagstatistieken conform publicatie door STOWA in 2015
+* Neerslagstatistieken_2019.xlsm: bevat de neerslagstatistieken conform publicatie door STOWA in 2019. In essentie betreft het een update van de statistieken voor korte duren.
+* Neerslagstatistieken_2024.xlsm: bevat de neerslagstatistieken conform publicatie door STOWA in 2024. Statistieken klimaat 'huidig' ongewijzigd tov publicatie 2019. Voor de zichtjaren multiplier berekend.
+
 #### VBA
 Let op: in alle functies gebruiken we zichtjaar 2014 om het 'huidige klimaat' mee aan te duiden; ook al is dit mogelijk niet langer opportuun. Dit om consistentie tussen de verschillende publicatiejaren te kunnen behouden.
 
