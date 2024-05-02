@@ -24,9 +24,11 @@ De basis voor het Excel-macro wat we hieronder bespreken wordt gevormd door de V
 _Neerslagstatistieken ten behoeve van De Nieuwe Stochastentool:_
 * Neerslagstatistieken_2015.xlsm: bevat de neerslagstatistieken conform publicatie door STOWA in 2015
 * Neerslagstatistieken_2019.xlsm: bevat de neerslagstatistieken conform publicatie door STOWA in 2019. In essentie betreft het een update van de statistieken voor korte duren.
-* Neerslagstatistieken_2024.xlsm: bevat de neerslagstatistieken conform publicatie door STOWA in 2024. Statistieken klimaat 'huidig' ongewijzigd tov publicatie 2019. Voor de zichtjaren multiplier berekend.
+* Neerslagstatistieken_2024.xlsm: bevat de neerslagstatistieken conform publicatie door STOWA in 2024. Statistieken klimaat 'huidig' ongewijzigd tov publicatie 2019. Voor de zichtjaren wordt het 'verandergetal) (een multiplier) berekend die een funtie is van de verwachte temperatuursstijging en het seizoen.
 
 #### VBA
+Alle Excel-werkboeken gebruiken hetzelfde bronbestand met VBA-functies: STOWA_Neerslagstatistiek.bas.
+
 Let op: in alle functies gebruiken we zichtjaar 2014 om het 'huidige klimaat' mee aan te duiden; ook al is dit mogelijk niet langer opportuun. Dit om consistentie tussen de verschillende publicatiejaren te kunnen behouden.
 
 _Publicatie neerslagstatistieken 2024_:
@@ -48,22 +50,6 @@ _Publicatie neerslagstatistieken 2015/2018_:
 * STOWA2015_JAARROND_T: berekent de herhalingstijd voor wintergebeurtenissen, gegeven het volume in millimeters, de duur in minuten, zichtjaar (2014, 2030, 2050, 2085) en scenario (GL, GH, WL, WH)
 
 
-#### Workbooks
-Het tabblad "KVD" bevat de parameterwaarden voor de kansverdelingsfuncties. Aan de grootheid 'neerslagvolume' is in de genoemde publicaties de GEV-kansdichtheidsfunctie gefit (Generalized Extreme Values). Het tabblad bevat voor verschillende duren, seizoenen en klimaatscenario's drie parameterwaarden:
-
-* mu: de locatieparameter
-* sigma: de schaalparameter
-* kappa: de vormparameter
-
-Voor de publicatie uit 2019 komt daar nog de dispersiecoëfficiënt bij.
-
-Het tabblad 'Naar_Stochastentool' bevat de complete lijst aan volumes en bijbehorende frequenties. Deze lijst is bedoeld om te worden geïmporteerd in de database die door De Nieuwe Stochastentool wordt gebruikt.
-
-De tabbladen Huidig_Z, Huidig_W, 2030_W etc. bevatten de tabellen met klassen van neerslagvolumes en de bijbehorende kans/frequentie, voor elk van de klimaatscenario's. 
-
-* Huidig staat voor huidig klimaat, 2030 voor zichtjaar 2030 etc.
-* Z staat voor Zomer en W voor winter.
-
 ### Jupyter
 Het Jupyter-notebook berekent de multiplier die nodig is om van het neerslagvolume onder scenario 2019_Huidig te komen tot het volume onder scenario's 2024.
 Het oorspronkelijke notebook werd opgesteld en aangelever door HKV-Lijn-In-Water.
@@ -76,7 +62,7 @@ STOWA. (2018). Neerslagstatistieken voor korte duren (Publicatienummer 2018-12).
 
 STOWA. (2019). Neerslagstatistiek en reeksen voor het waterbeheer 2019 (Publicatienummer 2019-19). Verkregen van [https://www.stowa.nl/publicaties/neerslagstatistiek-en-reeksen-voor-het-waterbeheer-2019](https://www.stowa.nl/sites/default/files/assets/PUBLICATIES/Publicaties%202019/STOWA%202019-19%20neerslagstatistieken.pdf).
 
-
+STOWA. (2024). Nog in te vullen
 
 
 
