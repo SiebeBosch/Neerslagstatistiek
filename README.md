@@ -23,7 +23,7 @@ De basis voor het Excel-macro wat we hieronder bespreken wordt gevormd door de V
 #### Werkboeken
 _Neerslagstatistieken ten behoeve van De Nieuwe Stochastentool:_
 * Neerslagstatistieken_2015.xlsm: bevat de neerslagstatistieken conform publicatie door STOWA in 2015
-* Neerslagstatistieken_2019.xlsm: bevat de neerslagstatistieken conform publicatie door STOWA in 2019. In essentie betreft het een update van de statistieken voor korte duren.
+* Neerslagstatistieken_2019.xlsm: bevat de neerslagstatistieken conform publicatie door STOWA in 2019.
 * Neerslagstatistieken_2024.xlsm: bevat de neerslagstatistieken conform publicatie door STOWA in 2024. Statistieken klimaat 'huidig' ongewijzigd tov publicatie 2019. Voor de zichtjaren wordt het 'verandergetal) (een multiplier) berekend die een funtie is van de verwachte temperatuursstijging en het seizoen.
 
 #### VBA
