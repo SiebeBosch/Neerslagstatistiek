@@ -12,7 +12,7 @@ Option Explicit
 '0617682689               '
 '-------------------------'
 
-'versie 1.06
+'versie 1.07
 'changelog:
 'v1.06: onderscheid aangebracht tussen verandergetal jaarrond en winter; ten behoeve van de neerslagscenario's van 2024
 
@@ -466,102 +466,108 @@ Public Function STOWA2019_JAARROND_T(ByVal DuurMinuten As Integer, ByVal Volume 
     
 End Function
 
-Function getVeranderGetal(Zichtjaar As Integer, Scenario As String, Seizoen as string, DuurUren As Double) As Double
+Function getVeranderGetal(Zichtjaar As Integer, Scenario As String, Seizoen As String, DuurUren As Double) As Double
     'deze functie berekent het verandergetal voor de klimaatscenario's 2024 als functie van zichtjaar, scenario en duur
     'op zijn beurt roept deze functie weer de functie VeranderGetalFunctie aan, waarin hij de verwachtte temperatuursstijging meegeeft, die afhangt van het zichtjaar en scenario
     '0.6 graden (2033L)
-    '0.8 graden (2100L)
+    '0.8 graden (2050L)
     '1.1 graden (2050M)
-    '1.9 graden (2100M)
-    '2.1 graden (2150M)
     '1.5 graden (2050H)
+    '0.8 graden (2100L)
+    '1.9 graden (2100M)
     '4.0 graden (2100H)
+    '0.8 graden (2150L)
+    '2.1 graden (2150M)
     '5.5 graden (2150H)
     If Zichtjaar = 2014 Then
-		'geen verandering
+                'geen verandering
         getVeranderGetal = 1
     ElseIf Zichtjaar = 2033 Then
         If Scenario = "L" Then
-            if seizoen = "winter" Then
-				getVeranderGetal = VeranderGetalFunctieWinter(0.6, DuurUren)
-			Else
-				getVeranderGetal = VeranderGetalFunctieJaarrond(0.6, DuurUren)			
-			end if
+            If Seizoen = "winter" Then
+                                getVeranderGetal = VeranderGetalFunctieWinter(0.6, DuurUren)
+                        Else
+                                getVeranderGetal = verandergetalfunctieJaarrond(0.6, DuurUren)
+                        End If
         ElseIf Scenario = "M" Then
-			'is een niet-bestaand scenario
-			getVeranderGetal = 0
+                        'is een niet-bestaand scenario
+                        getVeranderGetal = 0
         ElseIf Scenario = "H" Then
-			'is een niet-bestaand scenario
-			getVeranderGetal = 0
-		Else
-			'is een niet-bestaand scenario
-			getVeranderGetal = 0
+                        'is een niet-bestaand scenario
+                        getVeranderGetal = 0
+                Else
+                        'is een niet-bestaand scenario
+                        getVeranderGetal = 0
         End If
     ElseIf Zichtjaar = 2050 Then
         If Scenario = "L" Then
-			if seizoen = "winter" Then
-				getVeranderGetal = VeranderGetalFunctieWinter(0.8, DuurUren)
-			Else
-				getVeranderGetal = VeranderGetalFunctieJaarrond(0.8, DuurUren)
-			end if
+            If Seizoen = "winter" Then
+                getVeranderGetal = VeranderGetalFunctieWinter(0.8, DuurUren)
+            Else
+                getVeranderGetal = verandergetalfunctieJaarrond(0.8, DuurUren)
+            End If
         ElseIf Scenario = "M" Then
-			if seizoen = "winter" Then
-				getVeranderGetal = VeranderGetalFunctieWinter(1.1, DuurUren)
-			Else
-				getVeranderGetal = VeranderGetalFunctieJaarrond(1.1, DuurUren)
-			end If
+            If Seizoen = "winter" Then
+                getVeranderGetal = VeranderGetalFunctieWinter(1.1, DuurUren)
+            Else
+                getVeranderGetal = verandergetalfunctieJaarrond(1.1, DuurUren)
+            End If
         ElseIf Scenario = "H" Then
-			if seizoen = "winter" Then
-				getVeranderGetal = VeranderGetalFunctieWinter(1.5, DuurUren)
-			Else
-				getVeranderGetal = VeranderGetalFunctieJaarrond(1.5, DuurUren)
-			end if
-		else
-			'is een niet-bestaand scenario
-			getVeranderGetal = 0
+            If Seizoen = "winter" Then
+                getVeranderGetal = VeranderGetalFunctieWinter(1.5, DuurUren)
+            Else
+                getVeranderGetal = verandergetalfunctieJaarrond(1.5, DuurUren)
+            End If
+        Else
+            'is een niet-bestaand scenario
+            getVeranderGetal = 0
         End If
     ElseIf Zichtjaar = 2100 Then
         If Scenario = "L" Then
-			if seizoen = "winter" Then
-				getVeranderGetal = VeranderGetalFunctieWinter(0.8, DuurUren)
-			Else
-				getVeranderGetal = VeranderGetalFunctieJaarrond(0.8, DuurUren)
-			end if
+            If Seizoen = "winter" Then
+                getVeranderGetal = VeranderGetalFunctieWinter(0.8, DuurUren)
+            Else
+                getVeranderGetal = verandergetalfunctieJaarrond(0.8, DuurUren)
+            End If
         ElseIf Scenario = "M" Then
-			if seizoen = "winter" Then
-				getVeranderGetal = VeranderGetalFunctieWinter(1.9, DuurUren)
-			Else
-				getVeranderGetal = VeranderGetalFunctieJaarrond(1.9, DuurUren)
-			end if
+            If Seizoen = "winter" Then
+                getVeranderGetal = VeranderGetalFunctieWinter(1.9, DuurUren)
+            Else
+                getVeranderGetal = verandergetalfunctieJaarrond(1.9, DuurUren)
+            End If
         ElseIf Scenario = "H" Then
-			if seizoen = "winter" Then
-				getVeranderGetal = VeranderGetalFunctieWinter(4, DuurUren)
-			Else
-				getVeranderGetal = VeranderGetalFunctieJaarrond(4, DuurUren)
-			end if
-		else
-			'is een niet-bestaand scenario
-			getVeranderGetal = 0
+            If Seizoen = "winter" Then
+                getVeranderGetal = VeranderGetalFunctieWinter(4, DuurUren)
+            Else
+                getVeranderGetal = verandergetalfunctieJaarrond(4, DuurUren)
+            End If
+        Else
+            'is een niet-bestaand scenario
+            getVeranderGetal = 0
         End If
     ElseIf Zichtjaar = 2150 Then
         If Scenario = "L" Then
-			'is een niet-bestaand scenario
-			getVeranderGetal = 0
+            'is identiek aan 2050L en 2100L
+            If Seizoen = "winter" Then
+                getVeranderGetal = VeranderGetalFunctieWinter(0.8, DuurUren)
+            Else
+                getVeranderGetal = verandergetalfunctieJaarrond(0.8, DuurUren)
+            End If
         ElseIf Scenario = "M" Then
-			if seizoen = "winter" Then
-				getVeranderGetal = VeranderGetalFunctieWinter(2.1, DuurUren)
-			Else
-				getVeranderGetal = VeranderGetalFunctieJaarrond(2.1, DuurUren)
-			end if
+            If Seizoen = "winter" Then
+                getVeranderGetal = VeranderGetalFunctieWinter(2.1, DuurUren)
+            Else
+                getVeranderGetal = verandergetalfunctieJaarrond(2.1, DuurUren)
+            End If
         ElseIf Scenario = "H" Then
-			if seizoen = "winter" Then
-				getVeranderGetal = VeranderGetalFunctieWinter(5.5, DuurUren)
-			Else
-				getVeranderGetal = VeranderGetalFunctieJaarrond(5.5, DuurUren)
-			end if
-		Else
-			'is een niet-bestaand scenario
-			getVeranderGetal = 0
+            If Seizoen = "winter" Then
+                getVeranderGetal = VeranderGetalFunctieWinter(5.5, DuurUren)
+            Else
+                getVeranderGetal = verandergetalfunctieJaarrond(5.5, DuurUren)
+            End If
+        Else
+            'is een niet-bestaand scenario
+            getVeranderGetal = 0
         End If
     End If
 End Function
@@ -598,7 +604,7 @@ Function verandergetalfunctieJaarrond(Ts As Double, D As Double, Optional T As D
     Dim v As Double
     
     If D < 1 / 6 Then
-        Err.Raise Number:=vbObjectError + 513, _
+        err.Raise Number:=vbObjectError + 513, _
                   Description:="Gekozen duur " & D & " valt buiten domein (10 minuten t/m 240 uur)"
     ElseIf D <= 24 Then
         v = 1.234
@@ -607,7 +613,7 @@ Function verandergetalfunctieJaarrond(Ts As Double, D As Double, Optional T As D
     ElseIf D <= 240 Then
         v = 1.109
     ElseIf D > 240 Then
-        Err.Raise Number:=vbObjectError + 514, _
+        err.Raise Number:=vbObjectError + 514, _
                   Description:="Gekozen duur " & D & " valt buiten domein: 10 minuten t/m 10 dagen (240 uur)"
     End If
     
