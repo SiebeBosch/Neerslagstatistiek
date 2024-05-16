@@ -12,7 +12,7 @@ Option Explicit
 '0617682689               '
 '-------------------------'
 
-'versie 1.07
+'versie 1.08
 'changelog:
 'v1.06: onderscheid aangebracht tussen verandergetal jaarrond en winter; ten behoeve van de neerslagscenario's van 2024
 
@@ -593,7 +593,14 @@ Function VeranderGetalFunctieWinter(Ts As Double, D As Double, Optional T As Dou
                   Description:="Gekozen duur " & D & " valt buiten domein: 10 minuten t/m 10 dagen (240 uur)"
     End If
     
-    VeranderGetalFunctieWinter = 1 + (v - 1) * Ts / 4 ' de factor v is afgeleid voor 4 graden temperatuurstijging
+    'vervangen in v1.08
+    'VeranderGetalFunctieWinter = 1 + (v - 1) * Ts / 4 ' de factor v is afgeleid voor 4 graden temperatuurstijging
+    
+    ' de factor v is afgeleid voor 4 graden temperatuurstijging t.o.v. 2005,
+    ' maar in 2023 hebben we al 0.4 graden gehad (0.6 graden in 2033, ~0.4 in 2023)
+    VeranderGetalFunctieWinter = 1 + (v - 1) * (Ts - 0.4) / (4 - 0.4)
+
+    
 End Function
 
 Function verandergetalfunctieJaarrond(Ts As Double, D As Double, Optional T As Double = 1) As Double
@@ -617,7 +624,14 @@ Function verandergetalfunctieJaarrond(Ts As Double, D As Double, Optional T As D
                   Description:="Gekozen duur " & D & " valt buiten domein: 10 minuten t/m 10 dagen (240 uur)"
     End If
     
-    verandergetalfunctieJaarrond = 1 + (v - 1) * Ts / 4 ' de factor v is afgeleid voor 4 graden temperatuurstijging
+    'vervangen in v1.08
+    'verandergetalfunctieJaarrond = 1 + (v - 1) * Ts / 4 ' de factor v is afgeleid voor 4 graden temperatuurstijging
+
+    verandergetalfunctieJaarrond = 1 + (v - 1) * (Ts - 0.4) / (4 - 0.4)
+    ' de factor v is afgeleid voor 4 graden temperatuurstijging t.o.v. 2005,
+    ' maar in 2023 hebben we al 0.4 graden gehad (0.6 graden in 2033, ~0.4 in 2023)
+
+
 End Function
 
 Function Poly(D As Double) As Double
