@@ -2,6 +2,8 @@
 Neerslagstatistieken voor Nederland: implementatie van de publicaties van STOWA uit 2015/2018, 2019 en 2024.
 Samengesteld door Siebe Bosch, met dataleveringen en ondersteuning door Dorien Lugt, Robin Nicolai en Rudolf Versteeg.
 
+Datum: 23-5-2024
+
 ## Inleiding
 Deze git-repository bevat een implementatie van de neerslagstatistieken voor Nederland zoals gepubliceerd door STOWA in de jaren 2015 2018 (update korte duren), 2019 en 2024.
 De resultaten van de macro's en scripts in deze repository vormen input voor o.a.:
