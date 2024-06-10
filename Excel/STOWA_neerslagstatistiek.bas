@@ -12,9 +12,10 @@ Option Explicit
 '0617682689               '
 '-------------------------'
 
-'versie 1.08
+'versie 1.10
 'changelog:
 'v1.06: onderscheid aangebracht tussen verandergetal jaarrond en winter; ten behoeve van de neerslagscenario's van 2024
+'v1.10: uitgecommentarieerde code verwijderd; Debugging als optioneel argument toegevoegd aan enkele functies om wegschrijven naar de direct window mogelijk te maken.
 
 Public Function STOWA2015_2018_WINTER_T(ByVal DuurMinuten As Integer, ByVal Zichtjaar As Integer, ByVal Scenario As String, ByVal Corner As String, ByVal Volume As Double) As Double
     
@@ -41,54 +42,6 @@ Public Function STOWA2015_2018_WINTER_T(ByVal DuurMinuten As Integer, ByVal Zich
     Wend
     
     STOWA2015_2018_WINTER_T = T_estimate
-'
-'
-'
-'    'deze functie berekent het het herhalingstijd van een gegeven winterneerslag conform STOWA, 2015/2018 met gegeven duur in minuten en volume in mm
-'    'we berekenen hem in twee iteraties. In de eerste werken we met een geschatte herhalingstijd < 120 jaar.
-'    'in de tweede iteratie gebruiken we de herhalingstijd die werd berekend weer als input
-'    Dim locpar As Double, scalepar As Double, shapepar As Double, dispcoef As Double
-'    Dim V_2018_Huidig As Double, V_2015_Huidig As Double
-'    Dim Multiplier As Double
-'
-'    Dim p As Double
-'    If DuurMinuten > 720 Then  'in STOWA 2015 is lange duur gedefinieerd als >= 2 uur maar in 2018 is korte duur gedefinieerd als de duur t/m 720 min (12 uur)
-'        dispcoef = GEVDispCoefBasisstatistiek2015WinterLang(DuurMinuten, Zichtjaar, Scenario, Corner)
-'        locpar = GEVLocParBasisstatistiek2015WinterLang(DuurMinuten, Zichtjaar, Scenario, Corner)
-'        scalepar = dispcoef * locpar
-'        shapepar = GEVShapeParBasisstatistiek2015WinterLang(DuurMinuten, Zichtjaar, Scenario)
-'        p = GEVCDF(locpar, scalepar, shapepar, Volume)
-'    Else
-'        'voor de korte duren zijn geen klimaatscenario's gepubliceerd. Advies is om hier de verhouding klimaat_2015/huidig_2015 toe te passen als multiplier
-'        'bereken eerst de kansverdelingsparameters voor het huidige klimaat (2014)
-'        Volume = Volume / 1.02
-'        dispcoef = GEVDispCoefBasisstatistiek2018WinterKort(DuurMinuten)
-'        locpar = GEVLocParBasisstatistiek2018WinterKort(DuurMinuten)
-'        scalepar = dispcoef * locpar
-'        shapepar = GEVShapeParBasisStatistiek2018WinterKort(DuurMinuten)
-'        p = GEVCDF(locpar, scalepar, shapepar, Volume)
-'
-'        If Zichtjaar = 2014 Then
-'            Multiplier = 1
-'        Else
-'            Multiplier = STOWA2015_WINTER_V(DuurMinuten, 1 / -Math.Log(p), Zichtjaar, Scenario, Corner)
-'        End If
-'
-'
-'
-'    End If
-'
-'    If ReturnT Then
-'        STOWA2015_2018_WINTER_T = 1 / -Math.Log(p)
-'    ElseIf ReturnDispCoef Then
-'        STOWA2015_2018_WINTER_T = dispcoef
-'    ElseIf ReturnLocPar Then
-'        STOWA2015_2018_WINTER_T = locpar
-'    ElseIf ReturnScalePar Then
-'        STOWA2015_2018_WINTER_T = scalepar
-'    ElseIf ReturnShapePar Then
-'        STOWA2015_2018_WINTER_T = shapepar
-'    End If
     
 End Function
 
@@ -421,7 +374,7 @@ Public Function STOWA2024_JAARROND_V(DuurMinuten As Integer, T As Double, Zichtj
 End Function
 
 
-Public Function STOWA2024_JAARROND_T(ByVal DuurMinuten As Integer, ByVal Volume As Double, ByVal Zichtjaar As Integer, ByVal Scenario As String, ByVal Corner As String) As Double
+Public Function STOWA2024_JAARROND_T(ByVal DuurMinuten As Integer, ByVal Volume As Double, ByVal Zichtjaar As Integer, ByVal Scenario As String, ByVal Corner As String, Optional Debugging As Boolean = False) As Double
     'in de 2024-scenario's zijn de zichtjaren eenvoudigweg multipliers op de volumes van 2019_HUIDIG.
     'scenario Huidig is in de 2024-scenario's identiek aan die van 2019
     'daarom kunnen we vrij eenvoudig terugrekenen als we eerst ons volume terugschalen naar scenario Huidig
@@ -433,12 +386,12 @@ Public Function STOWA2024_JAARROND_T(ByVal DuurMinuten As Integer, ByVal Volume 
     
     'nu we het volume hebben teruggeschaald naar de equivalent voor scenario 'Huidig'
     'kunnen we eenvoudigweg de functie STOWA2019_NDJF_T aanroepen, met scenario 'Huidig' als referentie
-    STOWA2024_JAARROND_T = STOWA2019_JAARROND_T(DuurMinuten, Volume, 2014, "", "")
+    STOWA2024_JAARROND_T = STOWA2019_JAARROND_T(DuurMinuten, Volume, 2014, "", "", Debugging)
     
 End Function
 
 
-Public Function STOWA2019_JAARROND_T(ByVal DuurMinuten As Integer, ByVal Volume As Double, ByVal Zichtjaar As Integer, ByVal Scenario As String, ByVal Corner As String) As Double
+Public Function STOWA2019_JAARROND_T(ByVal DuurMinuten As Integer, ByVal Volume As Double, ByVal Zichtjaar As Integer, ByVal Scenario As String, ByVal Corner As String, Optional Debugging As Boolean = False) As Double
     'deze functie berekent het jaarrond neerslagvolume conform STOWA, 2019 met gegeven duur in minuten en volume in mm
     'we berekenen hem in iteratief door gebruik te maken van de functie STOWA_JAARROND_V
     Dim T_estimate As Double, P As Double
@@ -455,7 +408,7 @@ Public Function STOWA2019_JAARROND_T(ByVal DuurMinuten As Integer, ByVal Volume 
     
     While Not Done
         'nu gaan we de geschatte herhalingstijd invoeren in de functie met actuele statistiek
-        V_estimate = STOWA2019_JAARROND_V(DuurMinuten, T_estimate, Zichtjaar, Scenario, Corner)
+        V_estimate = STOWA2019_JAARROND_V(DuurMinuten, T_estimate, Zichtjaar, Scenario, Corner, Debugging)
         iIter = iIter + 1
         If iIter = 1000 Then Done = True
         If Math.Abs(V_estimate - Volume) < 0.001 Then Done = True
@@ -1055,7 +1008,7 @@ End Function
 
 
 
-Public Function STOWA2019_JAARROND_V(ByVal DuurMinuten As Integer, ByVal T As Double, ByVal Zichtjaar As Integer, ByVal Scenario As String, ByVal Corner As String) As Double
+Public Function STOWA2019_JAARROND_V(ByVal DuurMinuten As Integer, ByVal T As Double, ByVal Zichtjaar As Integer, ByVal Scenario As String, ByVal Corner As String, Optional Debugging As Boolean = False) As Double
     'deze functie berekent de herhalingstijd voor jaarrond-neerslagstatistiek conform STOWA, 2019 met gegeven Herhalingstijd en duur in minuten
     'in de tweede iteratie gebruiken we de herhalingstijd die werd berekend weer als input
     'voor de multipliers van klimaatscenario's onder korte duren (<= 2 uur) zie STOWA 2019-19 deelrapport 2 tabel 5
@@ -1079,6 +1032,15 @@ Public Function STOWA2019_JAARROND_V(ByVal DuurMinuten As Integer, ByVal T As Do
         scalepar = dispcoef * locpar
         shapepar = GLOShapeParBasisstatistiek2019KorteDuur(DuurMinuten, T)
         Volume = GLOINVERSE(locpar, scalepar, shapepar, P)
+    End If
+        
+    If Debugging Then
+        Debug.Print ("DuurMinuten: " & DuurMinuten)
+        Debug.Print ("dispcoef: " & dispcoef)
+        Debug.Print ("locpar: " & locpar)
+        Debug.Print ("scalepar: " & scalepar)
+        Debug.Print ("shapepar: " & shapepar)
+        Debug.Print ("Volume: " & Volume)
     End If
         
     'bepaal nu de aanpassingen als gevolg van het onderhavige klimaat
