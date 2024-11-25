@@ -33,8 +33,7 @@ _Statistiek van neerslagvolumes ten behoeve van De Nieuwe Stochastentool:_
   Op het tabblad 'Start' kan de gebruiker de statistieken exporteren naar CSV ten behoeve van opname in de database van De Nieuwe Stochastentool.
 
 _Statistiek van neerslapatronen ten behoeve van De Nieuwe Stochastentool:_
-* Neerslagpatronen_2024.xlsx: dit werkboek is in aanbouw. De bedoeling is om ook voor korte duren én de nieuwe klimaatscenario's aangepaste statistieken voor de kans op bepaalde buipatronen te achterhalen.
-
+* Overzicht_patronen_2019.xlsm: dit zijn de patronen en hun kansen zoals gepubliceerd in 2019. Ze zijn ook van toepassing op de scenario's van 2024 en de kansen zijn identiek voor alle klimaatscenario's (zie pag 156 van het STOWA-rapport NEERSLAGSTATISTIEK EN -REEKSEN VOOR HET WATERBEHEER 2019). Het werkboek bevat een aantal buttons waarmee de patronen en hun kansen kunnen worden omgezet naar tekst die in een CSV-file geplakt kunnen worden. Van daaruit kunt u ze importeren in De Nieuwe Stochastentool.
 
 #### VBA
 Alle Excel-werkboeken gebruiken hetzelfde bronbestand met VBA-functies: STOWA_Neerslagstatistiek.bas.
