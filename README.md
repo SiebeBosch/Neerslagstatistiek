@@ -63,6 +63,9 @@ _Publicatie neerslagstatistieken 2015/2018_:
 De Jupyter-notebooks berekenen het verandergetal (multiplier) dat nodig is om van het neerslagvolume onder scenario 2019_Huidig te komen tot het volume onder de scenario's 2024.
 Het oorspronkelijke notebook werd opgesteld en aangeleverd door HKV-Lijn-In-Water.
 
+### R
+De map met R bevat het oppervlaktereductie-script van Aart Overeem (KNMI). Met dit script wordt extreme neerslag zoals gemeten op een puntlocatie (bijv. meetstations) gecorrigeerd wanneer deze moet worden toegepast over een groter gebied.
+
 ## Literatuur
 
 STOWA. (2015). Nieuwe neerslagstatistieken voor het waterbeheer: extreme neerslaggebeurtenissen nemen toe (Publicatienummer 2015-10a). Verkregen van [https://www.stowa.nl/publicaties/nieuwe-neerslagstatistieken-voor-het-waterbeheer-extreme-neerslaggebeurtenissen-nemen](https://www.stowa.nl/sites/default/files/assets/PUBLICATIES/Publicaties%202015/STOWA%202015-10A.pdf)
